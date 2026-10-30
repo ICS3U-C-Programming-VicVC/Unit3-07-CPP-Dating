@@ -24,11 +24,13 @@ int const SMALLEST_LOOKS_RANGE = 0;
 int const LARGEST_LOOKS_RANGE = 10;
 
 int main() {
+    // Setting needed variables
     bool validIpt = false;
 
     std::string isRich;
     std::string hasLooks;
 
+    // Asking the user questions that will validate their worthiness
     std::cout << "Is your income well above average? ("
     << VALID
     << "/"
@@ -43,8 +45,9 @@ int main() {
     << ": ";
     std::cin >> hasLooks;
 
-
+    // the try statement will make sure the code safely with invalid user inputs
     try {
+        // checking is the IsRich input isn't valid
         if (isRich != VALID && isRich != INVALID) {
             std::cout << ERR_MSG;
 
@@ -52,6 +55,8 @@ int main() {
             validIpt = true;
         }
 
+        // This section determines whether or not the user is valid to
+        // date the grandchild
         if (validIpt) {
             int hasLooksInt = std::stoi(hasLooks);
 
@@ -73,6 +78,8 @@ int main() {
                 }
             }
         }
+        // If the try statement fails,
+        // it was likely due to the input from the user being invalid
     } catch (std::invalid_argument) {
         std::cout << ERR_MSG;
     }
